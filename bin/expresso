@@ -469,7 +469,7 @@ assert.response = function(server, req, res, msg) {
             }, requestTimeout);
         }
 
-        if (req.headers.hasOwnProperty('Expect') && req.headers['Expect'] === '100-continue') {
+        if (req.headers && req.headers['Expect'] === '100-continue') {
             request.on('continue', function() {
                 if (req.data) request.write(req.data);
             });
